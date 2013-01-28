@@ -722,6 +722,63 @@ PDFObject* PDFParser::ParseExistingInDirectObject(ObjectIDType inObjectID)
 	return readObject;
 }
 
+EStatusCode PDFParser::ParseAcroForm()
+{
+	EStatusCode status = PDFHummus::eSuccess;
+	PDFObjectCastPtr<PDFIndirectObjectReference> catalogReference(mTrailer->QueryDirectObject("Root"));
+	if(!catalogReference)
+		{
+			TRACE_LOG("PDFParser::ParsePagesObjectIDs, failed to read catalog reference in trailer");
+			status = PDFHummus::eFailure;
+		//	break;
+		}
+	PDFObjectCastPtr<PDFDictionary> catalog(ParseNewObject(catalogReference->mObjectID));
+		if(!catalog)
+		{
+			TRACE_LOG("PDFParser::ParsePagesObjectIDs, failed to read catalog");
+			status = PDFHummus::eFailure;
+		}
+		// get AcroForm, verify indirect reference
+		PDFObjectCastPtr<PDFIndirectObjectReference> AcroFormReference(catalog->QueryDirectObject("AcroForm"));
+		if(!AcroFormReference)
+		{
+			TRACE_LOG("PDFParser::ParseAcroForm, failed to read AcroForm reference in catalog");
+			status = PDFHummus::eFailure;
+		}
+		PDFObjectCastPtr<PDFDictionary> AcroForm(ParseNewObject(AcroFormReference->mObjectID));
+		if(!AcroForm)
+		{
+			TRACE_LOG("PDFParser::ParseAcroForm, failed to read AcroForm");
+			status = PDFHummus::eFailure;
+			//break;
+		}
+		PDFObjectCastPtr<PDFArray> AcroFormFields(AcroForm->QueryDirectObject("Fields"));
+		if(!AcroFormFields)
+		{
+			TRACE_LOG("PDFParser::ParseAcroForm, failed to read AcroFormFields");
+			status = PDFHummus::eFailure;
+		}
+
+		SingleValueContainerIterator<PDFObjectVector> it = AcroFormFields->GetIterator();
+			
+			while(it.MoveNext() && PDFHummus::eSuccess == status)
+			{
+				if(it.GetItem()->GetType() != PDFObject::ePDFObjectIndirectObjectReference)
+				{
+					TRACE_LOG1("PDFParser::ParsePagesIDs, unexpected type for a AcroForm array object, type = %s",PDFObject::scPDFObjectTypeLabel[it.GetItem()->GetType()]);
+					status = PDFHummus::eFailure;
+					break;
+				}
+				PDFObjectCastPtr<PDFDictionary> AcroFormFieldObject(ParseNewObject(((PDFIndirectObjectReference*)it.GetItem())->mObjectID));
+				if(!AcroFormFieldObject)
+				{
+					TRACE_LOG("PDFParser::ParsePagesIDs, unable to parse page node object from AcroFormsFields reference");
+					status = PDFHummus::eFailure;
+					break;
+				}
+			}
+	return status;
+}
 EStatusCode PDFParser::ParsePagesObjectIDs()
 {
 	EStatusCode status = PDFHummus::eSuccess;

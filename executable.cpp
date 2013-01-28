@@ -29,7 +29,7 @@ int main()
 	PDFParser* inParser;
 	inParser =&pdfWriter.GetModifiedFileParser();
 	
-	//inParser->ParseAcroForm();
+	inParser->ParseAcroForm();
 	
 	
 return 0;
