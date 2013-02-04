@@ -18,6 +18,7 @@
 
    
 */
+#include "PDFLiteralString.h"
 #include "PDFParser.h"
 #include "IByteReaderWithPosition.h"
 #include "PDFParserTokenizer.h"
@@ -722,7 +723,7 @@ PDFObject* PDFParser::ParseExistingInDirectObject(ObjectIDType inObjectID)
 	return readObject;
 }
 
-EStatusCode PDFParser::ParseAcroForm()
+ObjectIDType PDFParser::FindAcroFormID(std::string fieldName)
 {
 	EStatusCode status = PDFHummus::eSuccess;
 	PDFObjectCastPtr<PDFIndirectObjectReference> catalogReference(mTrailer->QueryDirectObject("Root"));
@@ -769,6 +770,10 @@ EStatusCode PDFParser::ParseAcroForm()
 					status = PDFHummus::eFailure;
 					break;
 				}
+				PDFObject* pdfObject = it.GetItem();
+				PDFIndirectObjectReference* pdfIndobjRef = (PDFIndirectObjectReference*) pdfObject;
+				//pdfIndobjRef->mo
+				pdfObject = ParseNewObject(pdfIndobjRef->mObjectID);
 				PDFObjectCastPtr<PDFDictionary> AcroFormFieldObject(ParseNewObject(((PDFIndirectObjectReference*)it.GetItem())->mObjectID));
 				if(!AcroFormFieldObject)
 				{
@@ -776,8 +781,26 @@ EStatusCode PDFParser::ParseAcroForm()
 					status = PDFHummus::eFailure;
 					break;
 				}
+				//PDFObjectCastPtr<PDFName> FieldType(AcroFormFieldObject->QueryDirectObject("FT"));
+				PDFObjectCastPtr<PDFLiteralString> FieldValue(AcroFormFieldObject->QueryDirectObject("T"));
+		
+				if(FieldValue->GetValue() == fieldName)
+				{
+					//return it.GetItem();
+					//return AcroFormReference->mObjectID;
+					return pdfIndobjRef->mObjectID;
+					
+					//return AcroFormFieldObject;
+					//return status;
+				}
+		/*if(!FieldValue)
+		{
+			TRACE_LOG("PDFParser::ParseAcroForm, failed to read fieldName");
+			status = PDFHummus::eFailure;
+		}*/
+
 			}
-	return status;
+	//return status;
 }
 EStatusCode PDFParser::ParsePagesObjectIDs()
 {

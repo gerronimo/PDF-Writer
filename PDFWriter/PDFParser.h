@@ -191,7 +191,7 @@ private:
 	PDFHummus::EStatusCode ParseXrefFromXrefTable(XrefEntryInput* inXrefTable,ObjectIDType inXrefSize,LongFilePositionType inXrefPosition);
 	PDFObject*  ParseExistingInDirectObject(ObjectIDType inObjectID);
 	PDFHummus::EStatusCode ParsePagesObjectIDs();
-	public: PDFHummus::EStatusCode ParseAcroForm();
+	public: ObjectIDType FindAcroFormID(std::string fieldName);
 	private:
 	PDFHummus::EStatusCode ParsePagesIDs(PDFDictionary* inPageNode,ObjectIDType inNodeObjectID);
 	PDFHummus::EStatusCode ParsePagesIDs(PDFDictionary* inPageNode,ObjectIDType inNodeObjectID,unsigned long& ioCurrentPageIndex);

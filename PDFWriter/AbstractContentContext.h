@@ -77,6 +77,8 @@ public:
 	// path stroke/fill
 	void b();
 	void B();
+	void BMC();
+	void EMC();
 	void bStar();
 	void BStar();
 	void s();
@@ -162,7 +164,9 @@ public:
 	// Note that placing an actual Tf command (and including in resources dictionary) will
 	// only occur when actually placing text.
 	void Tf(PDFUsedFont* inFontReference,double inFontSize);
+	void Tf();
 
+	void DA();
 	// place text to the current set font with Tf
 	// will return error if no font was set, or that one of the glyphs
 	// didn't succeed in encoding.

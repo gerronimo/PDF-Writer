@@ -112,7 +112,20 @@ void AbstractContentContext::B()
 
 	mPrimitiveWriter.WriteKeyword("B");
 }
+void AbstractContentContext::BMC()
+{
+	RenewStreamConnection();
+	AssertProcsetAvailable(KProcsetPDF);
 
+	mPrimitiveWriter.WriteKeyword("/Tx BMC");
+}
+void AbstractContentContext::EMC()
+{
+	RenewStreamConnection();
+	AssertProcsetAvailable(KProcsetPDF);
+
+	mPrimitiveWriter.WriteKeyword("EMC");
+}
 void AbstractContentContext::BStar()
 {
 	RenewStreamConnection();
@@ -744,10 +757,27 @@ void AbstractContentContext::TJHexLow(const StringOrDoubleList& inStringsAndSpac
 
 void AbstractContentContext::Tf(PDFUsedFont* inFontReference,double inFontSize)
 {
-	mGraphicStack.GetCurrentState().mFont = inFontReference;
-	mGraphicStack.GetCurrentState().mFontSize = inFontSize;
+	RenewStreamConnection();
+	AssertProcsetAvailable(KProcsetPDF);
+
+	mPrimitiveWriter.WriteKeyword("/Helv 0 Tf 0 g");
 }
 
+void AbstractContentContext::DA()
+{
+	RenewStreamConnection();
+	AssertProcsetAvailable(KProcsetPDF);
+
+	mPrimitiveWriter.WriteKeyword("/DA /Helv 0 Tf 0 g");
+}
+
+void AbstractContentContext::Tf()
+{
+	RenewStreamConnection();
+	AssertProcsetAvailable(KProcsetPDF);
+
+	mPrimitiveWriter.WriteKeyword("/Helv 8.891 Tf 0 g");
+}
 class ITextCommand
 {
 public:
