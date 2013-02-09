@@ -79,6 +79,7 @@ public:
 	void B();
 	void BMC();
 	void EMC();
+	void tejot(const std::string& inText);
 	void bStar();
 	void BStar();
 	void s();
@@ -171,13 +172,14 @@ public:
 	// will return error if no font was set, or that one of the glyphs
 	// didn't succeed in encoding.
 	// input parameter is UTF-8 encoded
-	PDFHummus::EStatusCode Tj(const std::string& inText);
+	PDFHummus::EStatusCode Tj(const GlyphUnicodeMappingList& inText);
 
 	// The rest of the text operators, handled by the library handing of font. text is in UTF8
 	PDFHummus::EStatusCode Quote(const std::string& inText);
 	PDFHummus::EStatusCode DoubleQuote(double inWordSpacing, double inCharacterSpacing, const std::string& inText);
 	PDFHummus::EStatusCode TJ(const StringOrDoubleList& inStringsAndSpacing); 
 
+	PDFHummus::EStatusCode Tj(const std::string& inText);
 	//
 	// Text showing operators using the library handling of fonts with direct glyph selection
 	//
@@ -186,7 +188,6 @@ public:
 	// each command accepts a list of glyphs. each glyph is mapped to its matching unicode values. 
 	// a glyph may have more than one unicode value in case it reperesents a series of Characters.
 
-	PDFHummus::EStatusCode Tj(const GlyphUnicodeMappingList& inText);
 	PDFHummus::EStatusCode Quote(const GlyphUnicodeMappingList& inText);
 	PDFHummus::EStatusCode DoubleQuote(double inWordSpacing, double inCharacterSpacing, const GlyphUnicodeMappingList& inText);
 	PDFHummus::EStatusCode TJ(const GlyphUnicodeMappingListOrDoubleList& inStringsAndSpacing); 
