@@ -119,6 +119,7 @@ void AbstractContentContext::BMC()
 
 	mPrimitiveWriter.WriteKeyword("/Tx BMC");
 }
+
 void AbstractContentContext::EMC()
 {
 	RenewStreamConnection();
@@ -765,12 +766,18 @@ void AbstractContentContext::TJHexLow(const StringOrDoubleList& inStringsAndSpac
 	mPrimitiveWriter.WriteKeyword("TJ");
 }
 
-void AbstractContentContext::Tf(PDFUsedFont* inFontReference,double inFontSize)
+void AbstractContentContext::Tf()
 {
 	RenewStreamConnection();
 	AssertProcsetAvailable(KProcsetPDF);
 
 	mPrimitiveWriter.WriteKeyword("/Helv 0 Tf 0 g");
+}
+
+void AbstractContentContext::Tf(PDFUsedFont* inFontReference,double inFontSize)
+{
+mGraphicStack.GetCurrentState().mFont = inFontReference;
+mGraphicStack.GetCurrentState().mFontSize = inFontSize;
 }
 
 void AbstractContentContext::DA()
@@ -781,13 +788,6 @@ void AbstractContentContext::DA()
 	mPrimitiveWriter.WriteKeyword("/DA /Helv 0 Tf 0 g");
 }
 
-void AbstractContentContext::Tf()
-{
-	RenewStreamConnection();
-	AssertProcsetAvailable(KProcsetPDF);
-
-	mPrimitiveWriter.WriteKeyword("/Helv 8.891 Tf 0 g");
-}
 class ITextCommand
 {
 public:
@@ -827,10 +827,10 @@ private:
 	AbstractContentContext* mContext;
 };
 
-EStatusCode AbstractContentContext::Tj(const std::string& inText)
+EStatusCode AbstractContentContext::Tj(const GlyphUnicodeMappingList& inText)
 {
-	TjCommand command(this);
-	return WriteTextCommandWithEncoding(inText,&command);
+TjCommand command(this);
+return WriteTextCommandWithDirectGlyphSelection(inText,&command);
 }
 
 class QuoteCommand : public ITextCommand
@@ -905,10 +905,10 @@ EStatusCode AbstractContentContext::TJ(const StringOrDoubleList& inStringsAndSpa
 	return TJ(parameters);
 }
 
-EStatusCode AbstractContentContext::Tj(const GlyphUnicodeMappingList& inText)
+EStatusCode AbstractContentContext::Tj(const std::string& inText)
 {
-	TjCommand command(this);
-	return WriteTextCommandWithDirectGlyphSelection(inText,&command);
+TjCommand command(this);
+return WriteTextCommandWithEncoding(inText,&command);
 }
 
 EStatusCode AbstractContentContext::WriteTextCommandWithDirectGlyphSelection(const GlyphUnicodeMappingList& inText,ITextCommand* inTextCommand)
