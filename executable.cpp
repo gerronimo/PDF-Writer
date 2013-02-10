@@ -113,36 +113,13 @@ status = eFailure;
 		PDFFormXObject* formXObject = pdfWriter.GetDocumentContext().StartFormXObject(PDFRectangle(0, 0, 278.93, 16.0));
 	
 		PDFUsedFont* font = pdfWriter.GetFontForFile(
-                                "C:/TestMaterials/fonts/HLB_____.PFB",
-                                "C:/TestMaterials/fonts/HLB_____.PFM");
+                                "C:/TestMaterials/arial.ttf");
 		if(!font)
 		{
 			status = PDFHummus::eFailure;
 		}
 		
-		//formXObject->GetResourcesDictionary().AddFontMapping(
 		XObjectContentContext* xobjectContentContext = formXObject->GetContentContext();
-		//mNotDefGlyphName = GetGlyphName(gindex);
-		
-		/*xobjectContentContext->g(0.75);
-		xobjectContentContext->re(0, 0, 278.93, 16);
-		xobjectContentContext->f();
-		xobjectContentContext->g(1);
-		xobjectContentContext->m(1, 1);
-		xobjectContentContext->l(1, 15);
-		xobjectContentContext->l(277.93, 15);
-		xobjectContentContext->l(276.93, 14);
-		xobjectContentContext->l(2, 14);
-		xobjectContentContext->l(2, 2);
-		xobjectContentContext->f();
-		xobjectContentContext->g(0.75293);
-		xobjectContentContext->m(277.93, 15);
-		xobjectContentContext->l(277.93, 1);
-		xobjectContentContext->l(1, 1);
-		xobjectContentContext->l(2, 2);
-		xobjectContentContext->l(276.93, 2);
-		xobjectContentContext->l(276.93, 14);
-		xobjectContentContext->f();*/
 		xobjectContentContext->BMC();
 		xobjectContentContext->q();
 		xobjectContentContext->re(2, 2, 274.93, 12);
@@ -154,27 +131,7 @@ status = eFailure;
 		//xobjectContentContext->Tm(20,0,0,20,40,822);
 		//xobjectContentContext->Tm(30,0,0,30,78.4252,662.8997);
 		xobjectContentContext->Td(124.885, 4.7014);
-		//EStatusCode encodingStatus = xobjectContentContext->Tj("abcd");
-		//xobjectContentContext->TjHexLow("hexlow");
-		//xobjectContentContext->Tj("asdfęąść");
-			StringOrDoubleList stringsAndWidthsB;
-//(A) 120 (W) 120 (A) 95 (Y again)
-stringsAndWidthsB.push_back(StringOrDouble("Ą"));
-stringsAndWidthsB.push_back(StringOrDouble(120));
-stringsAndWidthsB.push_back(StringOrDouble("W"));
-stringsAndWidthsB.push_back(StringOrDouble(120));
-stringsAndWidthsB.push_back(StringOrDouble("A"));
-stringsAndWidthsB.push_back(StringOrDouble(95));
-stringsAndWidthsB.push_back(StringOrDouble("Ą"));
-//xobjectContentContext->TJ(stringsAndWidthsB);
-
-//GlyphUnicodeMappingList glyphs;
-//glyphs.push_back(GlyphUnicodeMapping(34,'Ą'));
-//
-//xobjectContentContext->Tj(glyphs);	
-
-		/*if(encodingStatus != PDFHummus::eSuccess)
-			std::cout<<"Could not find some of the glyphs for this font";*/
+		EStatusCode encodingStatus = xobjectContentContext->Tj("Ą");
 		xobjectContentContext->ET();
 		xobjectContentContext->Q();
 		xobjectContentContext->EMC();
