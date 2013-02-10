@@ -66,9 +66,11 @@ void DocumentContext::SetObjectsContext(ObjectsContext* inObjectsContext)
 {
 	mObjectsContext = inObjectsContext;
 	mJPEGImageHandler.SetOperationsContexts(this,mObjectsContext);
-	mTIFFImageHandler.SetOperationsContexts(this,mObjectsContext);
 	mPDFDocumentHandler.SetOperationsContexts(this,mObjectsContext);
 	mUsedFontsRepository.SetObjectsContext(mObjectsContext);
+#ifndef NO_TIFF
+	mTIFFImageHandler.SetOperationsContexts(this,mObjectsContext);
+#endif
 }
 
 void DocumentContext::SetOutputFileInformation(OutputFile* inOutputFile)
@@ -1030,12 +1032,36 @@ JPEGImageHandler& DocumentContext::GetJPEGImageHandler()
 	return mJPEGImageHandler;
 }
 
+#ifndef NO_TIFF
 PDFFormXObject* DocumentContext::CreateFormXObjectFromTIFFFile(	const std::string& inTIFFFilePath,
 																const TIFFUsageParameters& inTIFFUsageParameters)
 {
 	
 	return mTIFFImageHandler.CreateFormXObjectFromTIFFFile(inTIFFFilePath,inTIFFUsageParameters);
 }
+
+PDFFormXObject* DocumentContext::CreateFormXObjectFromTIFFFile(
+                                                               const std::string& inTIFFFilePath,
+                                                               ObjectIDType inFormXObjectID,
+                                                               const TIFFUsageParameters& inTIFFUsageParameters)
+{
+	return mTIFFImageHandler.CreateFormXObjectFromTIFFFile(inTIFFFilePath,inFormXObjectID,inTIFFUsageParameters);
+}
+
+PDFFormXObject* DocumentContext::CreateFormXObjectFromTIFFStream(IByteReaderWithPosition* inTIFFStream,
+                                                                 const TIFFUsageParameters& inTIFFUsageParameters)
+{
+	return mTIFFImageHandler.CreateFormXObjectFromTIFFStream(inTIFFStream,inTIFFUsageParameters);
+}
+
+PDFFormXObject* DocumentContext::CreateFormXObjectFromTIFFStream(IByteReaderWithPosition* inTIFFStream,
+                                                                 ObjectIDType inFormXObjectID,
+                                                                 const TIFFUsageParameters& inTIFFUsageParameters)
+{
+	return mTIFFImageHandler.CreateFormXObjectFromTIFFStream(inTIFFStream,inFormXObjectID,inTIFFUsageParameters);
+}
+
+#endif
 
 PDFImageXObject* DocumentContext::CreateImageXObjectFromJPGFile(const std::string& inJPGFilePath,ObjectIDType inImageXObjectID)
 {
@@ -1047,18 +1073,12 @@ PDFFormXObject* DocumentContext::CreateFormXObjectFromJPGFile(const std::string&
 	return mJPEGImageHandler.CreateFormXObjectFromJPGFile(inJPGFilePath,inFormXObjectID);
 }
 
-PDFFormXObject* DocumentContext::CreateFormXObjectFromTIFFFile(	
-												const std::string& inTIFFFilePath,
-												ObjectIDType inFormXObjectID,
-												const TIFFUsageParameters& inTIFFUsageParameters)
-{
-	return mTIFFImageHandler.CreateFormXObjectFromTIFFFile(inTIFFFilePath,inFormXObjectID,inTIFFUsageParameters);
-}
 
 
-PDFUsedFont* DocumentContext::GetFontForFile(const std::string& inFontFilePath)
+
+PDFUsedFont* DocumentContext::GetFontForFile(const std::string& inFontFilePath,long inFontIndex)
 {
-	return mUsedFontsRepository.GetFontForFile(inFontFilePath);
+	return mUsedFontsRepository.GetFontForFile(inFontFilePath,inFontIndex);
 }
 
 EStatusCode DocumentContext::WriteUsedFontsDefinitions()
@@ -1066,9 +1086,9 @@ EStatusCode DocumentContext::WriteUsedFontsDefinitions()
 	return mUsedFontsRepository.WriteUsedFontsDefinitions();
 }
 
-PDFUsedFont* DocumentContext::GetFontForFile(const std::string& inFontFilePath,const std::string& inAdditionalMeticsFilePath)
+PDFUsedFont* DocumentContext::GetFontForFile(const std::string& inFontFilePath,const std::string& inAdditionalMeticsFilePath,long inFontIndex)
 {
-	return mUsedFontsRepository.GetFontForFile(inFontFilePath,inAdditionalMeticsFilePath);
+	return mUsedFontsRepository.GetFontForFile(inFontFilePath,inAdditionalMeticsFilePath,inFontIndex);
 }
 
 EStatusCodeAndObjectIDTypeList DocumentContext::CreateFormXObjectsFromPDF(const std::string& inPDFFilePath,
@@ -1695,19 +1715,6 @@ PDFFormXObject* DocumentContext::CreateFormXObjectFromJPGStream(IByteReaderWithP
 	return mJPEGImageHandler.CreateFormXObjectFromJPGStream(inJPGStream,inFormXObjectID);
 }
 
-PDFFormXObject* DocumentContext::CreateFormXObjectFromTIFFStream(IByteReaderWithPosition* inTIFFStream,
-															const TIFFUsageParameters& inTIFFUsageParameters)
-{
-	return mTIFFImageHandler.CreateFormXObjectFromTIFFStream(inTIFFStream,inTIFFUsageParameters);
-}
-
-PDFFormXObject* DocumentContext::CreateFormXObjectFromTIFFStream(IByteReaderWithPosition* inTIFFStream,
-															ObjectIDType inFormXObjectID,
-															const TIFFUsageParameters& inTIFFUsageParameters)
-{
-	return mTIFFImageHandler.CreateFormXObjectFromTIFFStream(inTIFFStream,inFormXObjectID,inTIFFUsageParameters);
-}
-
 EStatusCodeAndObjectIDTypeList DocumentContext::CreateFormXObjectsFromPDF(IByteReaderWithPosition* inPDFStream,
 																	const PDFPageRange& inPageRange,
 																	EPDFPageBox inPageBoxToUseAsFormBox,
@@ -1761,7 +1768,9 @@ void DocumentContext::Cleanup()
 	mTrailerInformation.Reset();
 	mCatalogInformation.Reset();
 	mJPEGImageHandler.Reset();
+#ifndef NO_TIFF
 	mTIFFImageHandler.Reset();
+#endif
 	mUsedFontsRepository.Reset();
 	mOutputFilePath.clear();
 	mExtenders.clear();

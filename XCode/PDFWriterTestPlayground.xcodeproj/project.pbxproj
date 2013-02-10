@@ -10,6 +10,8 @@
 		490BBEA915657BE900C28250 /* WindowsPath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 490BBEA815657BE900C28250 /* WindowsPath.cpp */; };
 		490BBEAB15657C5900C28250 /* FileURL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 490BBEAA15657C5900C28250 /* FileURL.cpp */; };
 		490BBEAF1566B80D00C28250 /* PosixPath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 490BBEAE1566B80D00C28250 /* PosixPath.cpp */; };
+		495F847616B40B440047C11A /* TTCTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 495F847416B40B440047C11A /* TTCTest.cpp */; };
+		495F847916B434780047C11A /* DFontTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 495F847716B434780047C11A /* DFontTest.cpp */; };
 		497CD3C215A87136000B3C7C /* BasicModification.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 497CD3C115A87136000B3C7C /* BasicModification.cpp */; };
 		497CD3C415A8ABBE000B3C7C /* AppendingAndReading.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 497CD3C315A8ABBE000B3C7C /* AppendingAndReading.cpp */; };
 		497EF61A15C1E50E00286CAC /* MergeToPDFForm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 497EF61915C1E50E00286CAC /* MergeToPDFForm.cpp */; };
@@ -19,7 +21,6 @@
 		498C3F0715C5B67E009EA9F8 /* JpegLibTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 498C3F0615C5B67E009EA9F8 /* JpegLibTest.cpp */; };
 		498C3F1615CBF64E009EA9F8 /* DCTDecodeFilterTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 498C3F1515CBF64E009EA9F8 /* DCTDecodeFilterTest.cpp */; };
 		499721A9169F3A1400D5068D /* libFreetype.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 499721A7169F3A1400D5068D /* libFreetype.a */; };
-		499721AA169F3A1400D5068D /* libLibJpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 499721A8169F3A1400D5068D /* libLibJpeg.a */; };
 		49B70DFD155C5F3500C0FD9F /* AppendPagesTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49B70DA8155C5F3500C0FD9F /* AppendPagesTest.cpp */; };
 		49B70DFE155C5F3500C0FD9F /* AppendSpecialPagesTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49B70DAA155C5F3500C0FD9F /* AppendSpecialPagesTest.cpp */; };
 		49B70DFF155C5F3500C0FD9F /* BoxingBaseTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49B70DAC155C5F3500C0FD9F /* BoxingBaseTest.cpp */; };
@@ -58,10 +59,11 @@
 		49B70E22155C5F3500C0FD9F /* TrueTypeTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49B70DF7155C5F3500C0FD9F /* TrueTypeTest.cpp */; };
 		49B70E23155C5F3500C0FD9F /* Type1Test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49B70DF9155C5F3500C0FD9F /* Type1Test.cpp */; };
 		49B70E24155C5F3500C0FD9F /* UppercaseSequanceTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49B70DFB155C5F3500C0FD9F /* UppercaseSequanceTest.cpp */; };
-		49BADF7A155C629C00BE7C32 /* libLibTiff.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BADF79155C629C00BE7C32 /* libLibTiff.a */; };
 		49E5A56C155C601B00ED8A29 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49E5A56B155C601B00ED8A29 /* CoreFoundation.framework */; };
 		49E5A56F155C602500ED8A29 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 49E5A56E155C602500ED8A29 /* libz.dylib */; };
 		49E5A571155C603300ED8A29 /* libPDFWriter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49E5A570155C603300ED8A29 /* libPDFWriter.a */; };
+		49EF594816BD35DD00531FD7 /* libLibJpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49EF594716BD35DD00531FD7 /* libLibJpeg.a */; };
+		49EF594E16BD3C7900531FD7 /* libLibTiff.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49EF594D16BD3C7800531FD7 /* libLibTiff.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -83,6 +85,10 @@
 		490BBEAC15657C6A00C28250 /* FileURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileURL.h; sourceTree = "<group>"; };
 		490BBEAD1566B7FD00C28250 /* PosixPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PosixPath.h; sourceTree = "<group>"; };
 		490BBEAE1566B80D00C28250 /* PosixPath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PosixPath.cpp; sourceTree = "<group>"; };
+		495F847416B40B440047C11A /* TTCTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TTCTest.cpp; sourceTree = "<group>"; };
+		495F847516B40B440047C11A /* TTCTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTCTest.h; sourceTree = "<group>"; };
+		495F847716B434780047C11A /* DFontTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DFontTest.cpp; sourceTree = "<group>"; };
+		495F847816B434780047C11A /* DFontTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFontTest.h; sourceTree = "<group>"; };
 		497CD3C015A87124000B3C7C /* BasicModification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicModification.h; sourceTree = "<group>"; };
 		497CD3C115A87136000B3C7C /* BasicModification.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BasicModification.cpp; sourceTree = "<group>"; };
 		497CD3C315A8ABBE000B3C7C /* AppendingAndReading.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppendingAndReading.cpp; sourceTree = "<group>"; };
@@ -101,7 +107,6 @@
 		498C3F1415CBF63F009EA9F8 /* DCTDecodeFilterTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCTDecodeFilterTest.h; sourceTree = "<group>"; };
 		498C3F1515CBF64E009EA9F8 /* DCTDecodeFilterTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DCTDecodeFilterTest.cpp; sourceTree = "<group>"; };
 		499721A7169F3A1400D5068D /* libFreetype.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFreetype.a; path = Build/Products/Debug/libFreetype.a; sourceTree = "<group>"; };
-		499721A8169F3A1400D5068D /* libLibJpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libLibJpeg.a; path = Build/Products/Debug/libLibJpeg.a; sourceTree = "<group>"; };
 		49B70DA8155C5F3500C0FD9F /* AppendPagesTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AppendPagesTest.cpp; path = ../PDFWriterTestPlayground/AppendPagesTest.cpp; sourceTree = SOURCE_ROOT; };
 		49B70DA9155C5F3500C0FD9F /* AppendPagesTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppendPagesTest.h; path = ../PDFWriterTestPlayground/AppendPagesTest.h; sourceTree = SOURCE_ROOT; };
 		49B70DAA155C5F3500C0FD9F /* AppendSpecialPagesTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AppendSpecialPagesTest.cpp; path = ../PDFWriterTestPlayground/AppendSpecialPagesTest.cpp; sourceTree = SOURCE_ROOT; };
@@ -178,10 +183,11 @@
 		49B70DFA155C5F3500C0FD9F /* Type1Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Type1Test.h; path = ../PDFWriterTestPlayground/Type1Test.h; sourceTree = SOURCE_ROOT; };
 		49B70DFB155C5F3500C0FD9F /* UppercaseSequanceTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UppercaseSequanceTest.cpp; path = ../PDFWriterTestPlayground/UppercaseSequanceTest.cpp; sourceTree = SOURCE_ROOT; };
 		49B70DFC155C5F3500C0FD9F /* UppercaseSequanceTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UppercaseSequanceTest.h; path = ../PDFWriterTestPlayground/UppercaseSequanceTest.h; sourceTree = SOURCE_ROOT; };
-		49BADF79155C629C00BE7C32 /* libLibTiff.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libLibTiff.a; path = Build/Products/Debug/libLibTiff.a; sourceTree = "<group>"; };
 		49E5A56B155C601B00ED8A29 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		49E5A56E155C602500ED8A29 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		49E5A570155C603300ED8A29 /* libPDFWriter.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPDFWriter.a; path = Build/Products/Debug/libPDFWriter.a; sourceTree = "<group>"; };
+		49EF594716BD35DD00531FD7 /* libLibJpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libLibJpeg.a; path = Build/Products/Debug/libLibJpeg.a; sourceTree = "<group>"; };
+		49EF594D16BD3C7800531FD7 /* libLibTiff.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libLibTiff.a; path = Build/Products/Debug/libLibTiff.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,11 +196,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				499721A9169F3A1400D5068D /* libFreetype.a in Frameworks */,
-				499721AA169F3A1400D5068D /* libLibJpeg.a in Frameworks */,
-				49BADF7A155C629C00BE7C32 /* libLibTiff.a in Frameworks */,
 				49E5A571155C603300ED8A29 /* libPDFWriter.a in Frameworks */,
 				49E5A56F155C602500ED8A29 /* libz.dylib in Frameworks */,
 				49E5A56C155C601B00ED8A29 /* CoreFoundation.framework in Frameworks */,
+				49EF594816BD35DD00531FD7 /* libLibJpeg.a in Frameworks */,
+				49EF594E16BD3C7900531FD7 /* libLibTiff.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,6 +220,17 @@
 			name = "Hummus Paths";
 			sourceTree = "<group>";
 		};
+		495F846F16B40ACA0047C11A /* Font Packages */ = {
+			isa = PBXGroup;
+			children = (
+				495F847416B40B440047C11A /* TTCTest.cpp */,
+				495F847516B40B440047C11A /* TTCTest.h */,
+				495F847716B434780047C11A /* DFontTest.cpp */,
+				495F847816B434780047C11A /* DFontTest.h */,
+			);
+			name = "Font Packages";
+			sourceTree = "<group>";
+		};
 		497CD3BE15A8710D000B3C7C /* Modification */ = {
 			isa = PBXGroup;
 			children = (
@@ -231,10 +248,10 @@
 		4989C51F155C5EED00D93089 = {
 			isa = PBXGroup;
 			children = (
+				49EF594D16BD3C7800531FD7 /* libLibTiff.a */,
 				499721A7169F3A1400D5068D /* libFreetype.a */,
-				499721A8169F3A1400D5068D /* libLibJpeg.a */,
-				49BADF79155C629C00BE7C32 /* libLibTiff.a */,
 				49E5A570155C603300ED8A29 /* libPDFWriter.a */,
+				49EF594716BD35DD00531FD7 /* libLibJpeg.a */,
 				49E5A56E155C602500ED8A29 /* libz.dylib */,
 				49E5A56B155C601B00ED8A29 /* CoreFoundation.framework */,
 				4989C52D155C5EED00D93089 /* PDFWriterTestPlayground */,
@@ -286,6 +303,7 @@
 		49B70E25155C5F5000C0FD9F /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				495F846F16B40ACA0047C11A /* Font Packages */,
 				498C3F0315C5B3C1009EA9F8 /* DCT decode */,
 				497CD3BE15A8710D000B3C7C /* Modification */,
 				49DB92AD155D149C00C949D7 /* Type1 */,
@@ -530,7 +548,7 @@
 		4989C521155C5EED00D93089 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "gal.kahana@hotmail.com";
 			};
 			buildConfigurationList = 4989C524155C5EED00D93089 /* Build configuration list for PBXProject "PDFWriterTestPlayground" */;
@@ -604,6 +622,8 @@
 				497EF61A15C1E50E00286CAC /* MergeToPDFForm.cpp in Sources */,
 				498C3F0715C5B67E009EA9F8 /* JpegLibTest.cpp in Sources */,
 				498C3F1615CBF64E009EA9F8 /* DCTDecodeFilterTest.cpp in Sources */,
+				495F847616B40B440047C11A /* TTCTest.cpp in Sources */,
+				495F847916B434780047C11A /* DFontTest.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -616,6 +636,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -643,6 +667,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -661,10 +689,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LIBRARY = "compiler-default";
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				HEADER_SEARCH_PATHS = (
-					"../FreeType/Include/**",
-					"../PDFWriter/**",
-					"../LibJpeg/**",
+					../FreeType/Include,
+					../PDFWriter,
+					../LibJpeg,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -679,10 +708,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LIBRARY = "compiler-default";
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				HEADER_SEARCH_PATHS = (
-					"../FreeType/Include/**",
-					"../PDFWriter/**",
-					"../LibJpeg/**",
+					../FreeType/Include,
+					../PDFWriter,
+					../LibJpeg,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

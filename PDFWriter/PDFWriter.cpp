@@ -220,10 +220,31 @@ PDFFormXObject* PDFWriter::CreateFormXObjectFromJPGFile(const std::string& inJPG
 	return mDocumentContext.CreateFormXObjectFromJPGFile(inJPGFilePath); 
 }
 
+#ifndef NO_TIFF
 PDFFormXObject* PDFWriter::CreateFormXObjectFromTIFFFile(const std::string& inTIFFFilePath,const TIFFUsageParameters& inTIFFUsageParameters)
 {
 	return mDocumentContext.CreateFormXObjectFromTIFFFile(inTIFFFilePath,inTIFFUsageParameters); 
 }
+
+PDFFormXObject* PDFWriter::CreateFormXObjectFromTIFFFile(const std::string& inTIFFFilePath,ObjectIDType inFormXObjectID, const TIFFUsageParameters& inTIFFUsageParameters)
+{
+	return mDocumentContext.CreateFormXObjectFromTIFFFile(inTIFFFilePath,inFormXObjectID,inTIFFUsageParameters);
+}
+
+PDFFormXObject* PDFWriter::CreateFormXObjectFromTIFFStream(IByteReaderWithPosition* inTIFFStream,
+                                                           const TIFFUsageParameters& inTIFFUsageParameters)
+{
+	return mDocumentContext.CreateFormXObjectFromTIFFStream(inTIFFStream,inTIFFUsageParameters);
+}
+
+PDFFormXObject* PDFWriter::CreateFormXObjectFromTIFFStream(IByteReaderWithPosition* inTIFFStream,
+                                                           ObjectIDType inFormXObjectID,
+                                                           const TIFFUsageParameters& inTIFFUsageParameters)
+{
+	return mDocumentContext.CreateFormXObjectFromTIFFStream(inTIFFStream,inFormXObjectID,inTIFFUsageParameters);
+}
+
+#endif
 
 PDFImageXObject* PDFWriter::CreateImageXObjectFromJPGFile(const std::string& inJPGFilePath,ObjectIDType inImageXObjectID)
 {
@@ -235,19 +256,15 @@ PDFFormXObject* PDFWriter::CreateFormXObjectFromJPGFile(const std::string& inJPG
 	return mDocumentContext.CreateFormXObjectFromJPGFile(inJPGFilePath,inImageXObjectID); 
 }
 
-PDFFormXObject* PDFWriter::CreateFormXObjectFromTIFFFile(const std::string& inTIFFFilePath,ObjectIDType inFormXObjectID, const TIFFUsageParameters& inTIFFUsageParameters)
+
+PDFUsedFont* PDFWriter::GetFontForFile(const std::string& inFontFilePath,long inFontIndex)
 {
-	return mDocumentContext.CreateFormXObjectFromTIFFFile(inTIFFFilePath,inFormXObjectID,inTIFFUsageParameters); 
+	return mDocumentContext.GetFontForFile(inFontFilePath,inFontIndex);
 }
 
-PDFUsedFont* PDFWriter::GetFontForFile(const std::string& inFontFilePath)
+PDFUsedFont* PDFWriter::GetFontForFile(const std::string& inFontFilePath,const std::string& inAdditionalMeticsFilePath,long inFontIndex)
 {
-	return mDocumentContext.GetFontForFile(inFontFilePath);
-}
-
-PDFUsedFont* PDFWriter::GetFontForFile(const std::string& inFontFilePath,const std::string& inAdditionalMeticsFilePath)
-{
-	return mDocumentContext.GetFontForFile(inFontFilePath,inAdditionalMeticsFilePath);
+	return mDocumentContext.GetFontForFile(inFontFilePath,inAdditionalMeticsFilePath,inFontIndex);
 }
 
 EStatusCodeAndObjectIDTypeList PDFWriter::CreateFormXObjectsFromPDF(const std::string& inPDFFilePath,
@@ -518,21 +535,6 @@ PDFFormXObject* PDFWriter::CreateFormXObjectFromJPGStream(IByteReaderWithPositio
 {
 	return mDocumentContext.CreateFormXObjectFromJPGStream(inJPGStream,inFormXObjectID);
 }
-
-
-PDFFormXObject* PDFWriter::CreateFormXObjectFromTIFFStream(IByteReaderWithPosition* inTIFFStream,
-															const TIFFUsageParameters& inTIFFUsageParameters)
-{
-	return mDocumentContext.CreateFormXObjectFromTIFFStream(inTIFFStream,inTIFFUsageParameters);
-}
-
-PDFFormXObject* PDFWriter::CreateFormXObjectFromTIFFStream(IByteReaderWithPosition* inTIFFStream,
-															ObjectIDType inFormXObjectID,
-															const TIFFUsageParameters& inTIFFUsageParameters)
-{
-	return mDocumentContext.CreateFormXObjectFromTIFFStream(inTIFFStream,inFormXObjectID,inTIFFUsageParameters);
-}
-
 
 EStatusCodeAndObjectIDTypeList PDFWriter::CreateFormXObjectsFromPDF(IByteReaderWithPosition* inPDFStream,
 																	const PDFPageRange& inPageRange,

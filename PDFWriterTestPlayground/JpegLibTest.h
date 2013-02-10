@@ -20,6 +20,9 @@
  */
 
 #pragma once
+
+#ifndef NO_DCT
+
 #include "ITestUnit.h"
 
 class JpegLibTest : public ITestUnit
@@ -31,3 +34,5 @@ public:
 	virtual PDFHummus::EStatusCode Run(const TestConfiguration& inTestConfiguration);
     
 };
+
+#endif

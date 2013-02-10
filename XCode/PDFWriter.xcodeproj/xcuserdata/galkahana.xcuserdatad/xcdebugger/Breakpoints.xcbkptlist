@@ -26,7 +26,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "617"
          endingLineNumber = "617"
-         landmarkName = "PDFWriter::ModifyPDF(const string&amp; inModifiedFile, EPDFVersion inPDFVersion, const string&amp; inOptionalAlternativeOutputFile, const LogConfiguration&amp; inLogConfiguration, const PDFCreationSettings&amp; inPDFCreationSettings)"
+         landmarkName = "PDFWriter::ModifyPDF(const std::string&amp; inModifiedFile, EPDFVersion inPDFVersion, const std::string&amp; inOptionalAlternativeOutputFile, const LogConfiguration&amp; inLogConfiguration, const PDFCreationSettings&amp; inPDFCreationSettings)"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -67,19 +67,6 @@
          endingLineNumber = "1834"
          landmarkName = "PDFParser::CreateFilterForStream(IByteReader* inStream,PDFName* inFilterName,PDFDictionary* inDecodeParams)"
          landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "../PDFWriter/InputDCTDecodeStream.cpp"
-         timestampString = "365719225.735342"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "64"
-         endingLineNumber = "64"
-         landmarkName = "HummusFillInputBuffer (j_decompress_ptr cinfo)"
-         landmarkType = "7">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"

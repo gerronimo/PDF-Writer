@@ -158,6 +158,7 @@ public:
 	PDFFormXObject* CreateFormXObjectFromJPGStream(IByteReaderWithPosition* inJPGStream,ObjectIDType inFormXObjectID);
 	
 	// tiff
+#ifndef NO_TIFF
 	PDFFormXObject* CreateFormXObjectFromTIFFFile(	const std::string& inTIFFFilePath,
 													const TIFFUsageParameters& inTIFFUsageParameters = TIFFUsageParameters::DefaultTIFFUsageParameters);
 	PDFFormXObject* CreateFormXObjectFromTIFFStream(IByteReaderWithPosition* inTIFFStream,
@@ -168,7 +169,7 @@ public:
 	PDFFormXObject* CreateFormXObjectFromTIFFStream(	IByteReaderWithPosition* inTIFFStream,
 													ObjectIDType inFormXObjectID,
 													const TIFFUsageParameters& inTIFFUsageParameters = TIFFUsageParameters::DefaultTIFFUsageParameters);
-
+#endif
 	// PDF 
 
 	// CreateFormXObjectsFromPDF is for using input PDF pages as objects in one page or more. you can used the returned IDs to place the 
@@ -228,10 +229,11 @@ public:
     PDFDocumentCopyingContext* CreatePDFCopyingContextForModifiedFile();
 
 
-	// fonts [text]
-	PDFUsedFont* GetFontForFile(const std::string& inFontFilePath);
+	// fonts [text], font index is provided for multi-font file packages (such as dfont and ttc), 0 the default is
+    // what should be passed for single-font files
+	PDFUsedFont* GetFontForFile(const std::string& inFontFilePath,long inFontIndex = 0);
 	// second overload is for type 1, when an additional metrics file is available
-	PDFUsedFont* GetFontForFile(const std::string& inFontFilePath,const std::string& inAdditionalMeticsFilePath);
+	PDFUsedFont* GetFontForFile(const std::string& inFontFilePath,const std::string& inAdditionalMeticsFilePath,long inFontIndex = 0);
 
 	// URL links
 	// URL should be encoded to be a valid URL, ain't gonna be checking that!
