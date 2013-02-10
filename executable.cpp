@@ -100,20 +100,11 @@ int main()
 	
 	 pdfWriter.GetObjectsContext().SetCompressStreams(false);
 	{
-			// basic text placement, with positioning (tm and td). and setting the font
-PDFUsedFont* arialTTF = pdfWriter.GetFontForFile("C:/TestMaterials/fonts/arial.ttf");
-
-
-if(!arialTTF)
-{
-status = eFailure;
-
-}
 
 		PDFFormXObject* formXObject = pdfWriter.GetDocumentContext().StartFormXObject(PDFRectangle(0, 0, 278.93, 16.0));
 	
 		PDFUsedFont* font = pdfWriter.GetFontForFile(
-                                "C:/TestMaterials/arial.ttf");
+                                "C:/TestMaterials/fonts/arial.ttf");
 		if(!font)
 		{
 			status = PDFHummus::eFailure;
