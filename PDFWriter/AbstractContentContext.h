@@ -32,6 +32,7 @@
 
 */
 
+#include "PDFLiteralString.h"
 #include "EStatusCode.h"
 #include "PrimitiveObjectsWriter.h"
 #include "GraphicStateStack.h"
@@ -172,7 +173,7 @@ public:
 	void Tf(PDFUsedFont* inFontReference,double inFontSize);
 	void Tf();
 
-	void DA();
+	void DA(std::string da);
 	// place text to the current set font with Tf
 	// will return error if no font was set, or that one of the glyphs
 	// didn't succeed in encoding.

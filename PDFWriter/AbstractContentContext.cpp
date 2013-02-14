@@ -18,6 +18,7 @@
 
    
 */
+#include "PDFLiteralString.h"
 #include "AbstractContentContext.h"
 #include "PDFStream.h"
 #include "ResourcesDictionary.h"
@@ -780,12 +781,14 @@ mGraphicStack.GetCurrentState().mFont = inFontReference;
 mGraphicStack.GetCurrentState().mFontSize = inFontSize;
 }
 
-void AbstractContentContext::DA()
+void AbstractContentContext::DA(std::string da)
 {
 	RenewStreamConnection();
 	AssertProcsetAvailable(KProcsetPDF);
-
-	mPrimitiveWriter.WriteKeyword("/DA /Helv 0 Tf 0 g");
+	
+	mPrimitiveWriter.WriteKeyword("/DA");
+	mPrimitiveWriter.WriteLiteralString(da);
+	
 }
 
 class ITextCommand
